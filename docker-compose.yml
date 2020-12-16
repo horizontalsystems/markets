@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+    app:
+        container_name: markets
+        command: node -r esm bin/app.js
+        build:
+            context: '.'
+            dockerfile: './docker/Dockerfile'
+        depends_on:
+            - db
+        ports:
+            - '5000:5000'
+        environment:
+            - NODE_ENV=production
+            - PORT=5000
+    db:
+        container_name: postgres
+        image: postgres:12-alpine
+        ports:
+            - '5432:5432'
+        volumes:
+            - markets-postgres-data:/var/lib/postgresql/data
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: markets
+volumes:
+      markets-postgres-data:

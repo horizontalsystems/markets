@@ -1,0 +1,44 @@
+{
+    "development": {
+        "username": "postgres",
+        "password": "postgres",
+        "database": "markets",
+        "host": "localhost",
+        "port": 5432,
+        "dialect": "postgres",
+        "pool": {
+            "idle": 30000,
+            "min": 2,
+            "max": 5
+        },
+        "logging": true,
+        "define": {
+            "timestamps": false
+        }
+    },
+    "test": {
+        "dialect": "sqlite",
+        "storage": ":memory",
+        "logging": true,
+        "define": {
+            "timestamps": true
+        }
+    },
+    "production": {
+        "username": "postgres",
+        "password": "postgres",
+        "database": "markets",
+        "host": "db",
+        "port": 5432,
+        "dialect": "postgres",
+        "pool": {
+            "idle": 30000,
+            "min": 2,
+            "max": 5
+        },
+        "logging": false,
+        "define": {
+            "timestamps": false
+        }
+    }
+}

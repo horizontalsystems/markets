@@ -1,0 +1,17 @@
+{
+    "development": {
+        "server": {
+            "port": "3000"
+        }
+    },
+    "test": {
+        "server": {
+            "port": "3000"
+        }
+    },
+    "production": {
+        "server": {
+            "port": "3000"
+        }
+    }
+}
