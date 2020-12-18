@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-import Coin from './coin.model';
+import Coin from './global.marketinfo.model';
 import dbConfig from '../../config/db.config.json';
 
 const config = dbConfig[process.env.NODE_ENV || 'development'];
