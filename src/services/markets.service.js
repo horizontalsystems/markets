@@ -3,46 +3,30 @@ import MarketInfoProvider from './providers/marketinfo.provider';
 import StorageService from './storage.service'
 
 class MarketsService {
-    constructor(logger, appConfig, coinsConfig) {
+    constructor(logger, appConfig) {
         this.logger = logger;
         this.appConfig = appConfig;
-        this.coinsConfig = coinsConfig
-        this.baseCurrency = coinsConfig.baseCurrency
+        this.baseCurrency = appConfig.coins.base_currency
 
-        this.marketInfoProvider = new MarketInfoProvider(this.logger)
+        this.marketInfoProvider = new MarketInfoProvider(logger, appConfig.providers)
     }
 
     async start() {
         try {
             this.logger.info('Started markets Service')
-            const coins = await StorageService.getCoins()
-
-            if (coins.length === 0) {
-                this.coinsConfig.coins.forEach(coin => {
-                    StorageService.saveCoin(coin)
-                });
-            }
         } catch (e) {
             this.logger.info(e)
         }
     }
 
-    async getSupportedCoins() {
+    async getGlobalMarketInfo() {
         try {
-            return StorageService.getCoins()
+            return this.marketInfoProvider.getGlobalMarketInfo()
         } catch (e) {
             this.logger.info(e)
         }
 
-        return []
-    }
-
-    getMarketInfo(coinCode) {
-
-    }
-
-    getGlobalMarketInfo() {
-
+        return {}
     }
 }
 

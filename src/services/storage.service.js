@@ -1,16 +1,16 @@
-import Coin from '../models/coin.model'
+import Coin from '../models/global.marketinfo.model'
 
 class StorageService {
-    static getCoins() {
+    static getGlobalMarketInfo(date) {
         return Coin.findAll({
             where: {
-                status: 1
+                date
             },
             order: [['code', 'ASC']]
         });
     }
 
-    static saveCoin(newCoin) {
+    static saveGlobalMarketInfo(newCoin) {
         return Coin.findOrCreate({
             where: {
                 code: newCoin.code,
