@@ -1,23 +1,28 @@
 import Sequelize from 'sequelize';
 
-class Coin extends Sequelize.Model {
+class GlobalMarketInfoModel extends Sequelize.Model {
     static init(sequelize, DataTypes) {
         return super.init(
             {
                 id: {
-                    type: DataTypes.INTEGER,
+                    type: DataTypes.BIGINT,
                     allowNull: false,
                     autoIncrement: true,
                     primaryKey: true
                 },
-                code: {
-                    type: DataTypes.STRING,
+                date: {
+                    type: DataTypes.BIGINT,
                     allowNull: false,
                     unique: 'compositeIndex'
                 },
-                title: {
-                    type: DataTypes.STRING,
-                    allowNull: false
+                marketCap: {
+                    type: DataTypes.DOUBLE,
+                    defaultValue: 0,
+                    field: 'market_cap'
+                },
+                volume24h: {
+                    type: DataTypes.DOUBLE,
+                    defaultValue: 0
                 },
                 tokenId: {
                     type: DataTypes.STRING,
@@ -29,11 +34,11 @@ class Coin extends Sequelize.Model {
             },
             {
                 timestamps: false,
-                tableName: 'tb_coin',
+                tableName: 'tb_global_market_info',
                 sequelize
             }
         );
     }
 }
 
-export default Coin
+export default GlobalMarketInfoModel
