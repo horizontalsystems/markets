@@ -2,16 +2,44 @@
     "development": {
         "server": {
             "port": "3000"
+        },
+        "coins": {
+            "base_currency": "USD"
+        },
+        "providers": {
+            "infura": {
+                "base_url": "https://mainnet.infura.io/v3/",
+                "project_id": "0355dc03ff5746c79181508539b09c2c"
+            }
         }
     },
     "test": {
         "server": {
             "port": "3000"
+        },
+        "coins": {
+            "base_currency": "USD"
+        },
+        "providers": {
+            "infura": {
+                "base_url": "https://mainnet.infura.io/v3/",
+                "project_id": "0355dc03ff5746c79181508539b09c2c"
+            }
         }
     },
     "production": {
         "server": {
             "port": "3000"
+        },
+        "coins": {
+            "base_currency": "USD"
+        },
+        "providers": {
+            "infura": {
+                "base_url": "https://mainnet.infura.io/v3/",
+                "project_id": ""
+            }
         }
+
     }
 }
