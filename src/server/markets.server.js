@@ -7,7 +7,6 @@ import logger from '../utils/logger.winston'
 import MarketsService from '../services/markets.service'
 import Routes from '../routes'
 import db from '../models/index'
-import coinsConfig from '../../config/coins.config.json';
 
 const appConfig = AppConfig[process.env.NODE_ENV || 'development'];
 const morgan = require('morgan');
@@ -50,7 +49,7 @@ class MarketsServder {
         this.http.listen(this.port);
         logger.info(`App started listening port:${this.port}`)
 
-        const marketsService = new MarketsService(logger, appConfig, coinsConfig);
+        const marketsService = new MarketsService(logger, appConfig);
         const routes = new Routes(marketsService)
         this.initRoutes(routes.getRouter())
         marketsService.start()

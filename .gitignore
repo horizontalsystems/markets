@@ -5,3 +5,5 @@ node_modules
 *.log*
 .env
 database.sqlite3
+.nyc_output/
+coverage/
