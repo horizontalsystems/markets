@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-import Coin from './global.marketinfo.model';
+import GlobalDefiMarketsEntiry from './global.defi.markets.entity';
 import dbConfig from '../../config/db.config.json';
 
 const config = dbConfig[process.env.NODE_ENV || 'development'];
@@ -11,7 +11,7 @@ const sequelize = new Sequelize(
 );
 
 const models = {
-    Coin: Coin.init(sequelize, Sequelize)
+    GlobalDefiMarketsEntiry: GlobalDefiMarketsEntiry.init(sequelize, Sequelize)
 };
 
 // This creates relationships in the ORM

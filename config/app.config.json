@@ -1,7 +1,7 @@
 {
     "development": {
         "server": {
-            "port": "3000"
+            "port": "3100"
         },
         "coins": {
             "base_currency": "USD"
@@ -10,12 +10,18 @@
             "infura": {
                 "base_url": "https://mainnet.infura.io/v3/",
                 "project_id": "0355dc03ff5746c79181508539b09c2c"
+            },
+            "coingecko": {
+                "base_url": "https://api.coingecko.com/api/v3"
+            },
+            "defillama": {
+                "base_url": "https://api.defillama.com"
             }
         }
     },
     "test": {
         "server": {
-            "port": "3000"
+            "port": "3100"
         },
         "coins": {
             "base_currency": "USD"
@@ -24,12 +30,18 @@
             "infura": {
                 "base_url": "https://mainnet.infura.io/v3/",
                 "project_id": "0355dc03ff5746c79181508539b09c2c"
+            },
+            "coingecko": {
+                "base_url": "https://api.coingecko.com/api/v3"
+            },
+            "defillama": {
+                "base_url": "https://api.defillama.com"
             }
         }
     },
     "production": {
         "server": {
-            "port": "3000"
+            "port": "3100"
         },
         "coins": {
             "base_currency": "USD"
@@ -38,7 +50,14 @@
             "infura": {
                 "base_url": "https://mainnet.infura.io/v3/",
                 "project_id": ""
+            },
+            "coingecko": {
+                "base_url": "https://api.coingecko.com/api/v3"
+            },
+            "defillama": {
+                "base_url": "https://api.defillama.com"
             }
+
         }
 
     }

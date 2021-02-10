@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 
-class GlobalMarketInfoModel extends Sequelize.Model {
+class GlobalDefiMarketsEntity extends Sequelize.Model {
     static init(sequelize, DataTypes) {
         return super.init(
             {
@@ -12,8 +12,7 @@ class GlobalMarketInfoModel extends Sequelize.Model {
                 },
                 date: {
                     type: DataTypes.BIGINT,
-                    allowNull: false,
-                    unique: 'compositeIndex'
+                    allowNull: false
                 },
                 marketCap: {
                     type: DataTypes.DOUBLE,
@@ -24,21 +23,19 @@ class GlobalMarketInfoModel extends Sequelize.Model {
                     type: DataTypes.DOUBLE,
                     defaultValue: 0
                 },
-                tokenId: {
-                    type: DataTypes.STRING,
-                    field: 'token_id',
-                    unique: 'compositeIndex'
-                },
-                type: { type: DataTypes.INTEGER, defaultValue: 0 },
-                status: { type: DataTypes.INTEGER, defaultValue: 1 }
+                totalValueLocked: {
+                    type: DataTypes.DOUBLE,
+                    defaultValue: 0,
+                    field: 'tvl'
+                }
             },
             {
                 timestamps: false,
-                tableName: 'tb_global_market_info',
+                tableName: 'tb_global_defi_markets',
                 sequelize
             }
         );
     }
 }
 
-export default GlobalMarketInfoModel
+export default GlobalDefiMarketsEntity
