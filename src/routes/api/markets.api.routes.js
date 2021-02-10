@@ -1,13 +1,13 @@
 import MarketsController from '../../controllers/markets.controller';
 import logger from '../../utils/logger.winston';
 
-class MarketsRoutes {
+class MarketsApiRoutes {
     constructor(router, monitoringService) {
         this.marketsController = new MarketsController(logger, monitoringService);
         this.router = router
 
-        this.router.get('/markets/info/global', (_, res) => {
-            this.marketsController.getGlobalMarketInfo(res)
+        this.router.get('/markets/global/defi', (_, res) => {
+            this.marketsController.getGlobalDefiMarkets(res)
         });
     }
 
@@ -16,4 +16,4 @@ class MarketsRoutes {
     }
 }
 
-export default MarketsRoutes
+export default MarketsApiRoutes
