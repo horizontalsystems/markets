@@ -1,28 +1,27 @@
-import Coin from '../models/global.marketinfo.model'
+import { Op } from 'sequelize'
+import GlobalDefiMarketsEntity from '../models/global.defi.markets.entity'
 
 class StorageService {
-    static getGlobalMarketInfo(date) {
-        return Coin.findAll({
-            where: {
-                date
-            },
-            order: [['code', 'ASC']]
-        });
+    static saveGlobalDefiMarkets(date, globalDefiMarkets) {
+        GlobalDefiMarketsEntity.create({
+            date,
+            marketCap: globalDefiMarkets.marketCap,
+            volume24h: globalDefiMarkets.volume24h,
+            totalValueLocked: globalDefiMarkets.totalValueLocked
+        })
     }
 
-    static saveGlobalMarketInfo(newCoin) {
-        return Coin.findOrCreate({
+    static getLatestDefiMarkets(forDate) {
+        return GlobalDefiMarketsEntity.findAll({
+            limit: 1,
+            order: [['date', 'DESC']],
             where: {
-                code: newCoin.code,
-                type: newCoin.type
+                date: {
+                    [Op.lte]: forDate
+                }
             },
-            defaults: {
-                code: newCoin.code,
-                title: newCoin.title,
-                type: newCoin.type,
-                tokenId: newCoin.tokenId
-            }
-        }).then(created => created[0]);
+            attributes: ['date', 'marketCap', 'volume24h', 'totalValueLocked']
+        })
     }
 }
 export default StorageService;
