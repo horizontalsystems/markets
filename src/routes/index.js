@@ -1,15 +1,19 @@
 import { Router } from 'express'
-import MarketsRoutes from './api/markets.routes'
+import MarketsApiRoutes from './api/markets.api.routes'
+import CoreRoutes from './core/core.routes'
 
 class Routes {
     constructor(marketsService) {
-        this.router = new Router()
-        this.marketsRoutes = new MarketsRoutes(this.router, marketsService)
-        this.router.use('/api/v1/', this.marketsRoutes.getRouter());
+        this.routerApi = new Router()
+        this.routerCore = new Router()
+        this.marketsRoutes = new MarketsApiRoutes(this.routerApi, marketsService)
+        this.coreRoutes = new CoreRoutes(this.routerCore, marketsService)
+        this.routerCore.use('/', this.coreRoutes.getRouter());
+        this.routerApi.use('/api/v1/', this.marketsRoutes.getRouter());
     }
 
     getRouter() {
-        return this.router
+        return [this.routerApi, this.routerCore]
     }
 }
 

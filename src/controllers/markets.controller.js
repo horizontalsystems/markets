@@ -4,9 +4,9 @@ class MarketsController {
         this.marketsService = marketsService
     }
 
-    getGlobalMarketInfo(res) {
+    getGlobalDefiMarkets(res) {
         this.marketsService
-            .getGlobalMarketInfo()
+            .getGlobalDefiMarkets()
             .then(result => {
                 res.status(200).json(result);
             })
