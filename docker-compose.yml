@@ -9,10 +9,10 @@ services:
         depends_on:
             - db
         ports:
-            - '5000:5000'
+            - '3100:3100'
         environment:
             - NODE_ENV=production
-            - PORT=5000
+            - PORT=3100
     db:
         container_name: postgres
         image: postgres:12-alpine
